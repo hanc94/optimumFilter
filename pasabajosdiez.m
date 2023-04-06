@@ -1,0 +1,13 @@
+clc;
+clear all;
+close all;
+f_s=20e3;
+f=[0.1 pi/4];
+A=[1 0];
+ri=[0.01 0.0001];
+[n,fo,mo,W]=firpmord(f,A,ri,f_s);
+h=firpm(n,fo,mo,W);
+[H,Om]=freqz(h,1,65536);
+figure;
+plot(Om/(2*pi)*f_s,abs(H));
+grid on;
